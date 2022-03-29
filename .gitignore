@@ -1,0 +1,28 @@
+# Logs
+/logs
+*.log
+npm-debug.log*
+
+# Dependency directories
+/src/node_modules/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+src/.eslintcache
+
+# dotenv environment variables file
+.env
+
+# nuxt.js build output
+src/.nuxt
+
+# Nuxt generate
+src/dist
+
+# IDE / Editor
+.idea
+
+# macOS
+.DS_Store
