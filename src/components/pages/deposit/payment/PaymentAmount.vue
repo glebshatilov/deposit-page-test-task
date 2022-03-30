@@ -15,10 +15,12 @@ import UiInput from '~/components/ui/Input/UiInput'
 
 export default {
   name: 'PaymentAmount',
+
   components: {
     UiButton,
     UiInput
   },
+
   data () {
     return {
       localPaymentAmount: '',
@@ -29,11 +31,7 @@ export default {
       }
     }
   },
-  watch: {
-    localPaymentAmount (value) {
-      this.updateAmount(value)
-    }
-  },
+
   computed: {
     ...mapState({
       paymentAmount: state => state.deposit.payment.amount
@@ -42,6 +40,13 @@ export default {
       return Boolean(this.paymentAmount)
     }
   },
+
+  watch: {
+    localPaymentAmount (value) {
+      this.updateAmount(value)
+    }
+  },
+
   methods: {
     ...mapActions({
       updateAmount: 'deposit/payment/updateAmount'

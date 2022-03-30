@@ -15,10 +15,12 @@ import UiButton from '~/components/ui/Button/UiButton'
 
 export default {
   name: 'PaymentMethods',
+
   components: {
     PaymentMethodsList,
     UiButton
   },
+
   computed: {
     ...mapState({
       selectedMethod: state => state.deposit.payment.selectedMethod,
@@ -28,6 +30,7 @@ export default {
       return this.checkValidity()
     }
   },
+
   methods: {
     checkValidity () {
       if (this.selectedMethod) {

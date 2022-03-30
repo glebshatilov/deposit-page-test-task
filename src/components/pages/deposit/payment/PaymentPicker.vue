@@ -14,11 +14,13 @@ import PaymentCurrency from './PaymentCurrency'
 
 export default {
   name: 'PaymentPicker',
+
   components: {
     PaymentMethods,
     PaymentAmount,
     PaymentCurrency
   },
+
   data () {
     return {
       step: 'amount'

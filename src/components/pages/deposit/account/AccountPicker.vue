@@ -15,10 +15,12 @@ import UiButton from '~/components/ui/Button/UiButton'
 
 export default {
   name: 'AccountPicker',
+
   components: {
     AccountList,
     UiButton
   },
+
   computed: {
     ...mapState({
       selectedAccount: state => state.deposit.account.selected
@@ -27,6 +29,7 @@ export default {
       return Boolean(this.selectedAccount)
     }
   },
+
   methods: {
     submit () {
       this.$router.push('/deposit/payment-method/')
