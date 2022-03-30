@@ -217,7 +217,7 @@ export default {
     }
 
     width: 100%;
-    padding: 18px 12px 10px;
+    padding: 18px 12px 6px;
     background-color: var(--white);
     border: 1px solid var(--gray-73-color);
     border-radius: 3px;
@@ -227,10 +227,6 @@ export default {
     color: var(--black);
     outline: none;
     transition: border-color .2s, box-shadow .2s;
-
-    &:read-only {
-      color: var(--gray-53-color);
-    }
   }
 
   &__label {

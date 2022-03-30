@@ -1,7 +1,7 @@
 <template>
   <div class="payment-currency">
-    <h1>Enter amount of your payment</h1>
-    <UiInput v-model="localPaymentAmount" label="Enter amount" :mask="maskOptions" />
+    <h1>Choose currency of your payment</h1>
+    <UiSelect v-model="localPaymentCurrency" label="Payment currency" :items="availableCurrencies" />
     <UiButton class="payment-currency__button" :disabled="!canGoToNextStep" @click="submit">
       Continue
     </UiButton>
@@ -11,40 +11,54 @@
 <script>
 import { mapState, mapActions } from 'vuex'
 import UiButton from '~/components/ui/Button/UiButton'
-import UiInput from '~/components/ui/Input/UiInput'
+import UiSelect from '~/components/ui/Select/UiSelect'
 
 export default {
   name: 'PaymentCurrency',
+
   components: {
     UiButton,
-    UiInput
+    UiSelect
   },
+
   data () {
     return {
-      localPaymentAmount: '',
-      maskOptions: {
-        mask: Number,
-        radix: '.',
-        thousandsSeparator: ' '
-      }
+      localPaymentCurrency: '',
+      availableCurrencies: [
+        {
+          id: 1,
+          text: 'USD',
+          value: 'USD',
+          subtext: 'United States Dollar'
+        },
+        {
+          id: 2,
+          text: 'AED',
+          value: 'AED',
+          subtext: 'United Arab Emirates Dirham'
+        }
+      ]
     }
   },
-  watch: {
-    localPaymentAmount (value) {
-      this.updateAmount(value)
-    }
-  },
+
   computed: {
     ...mapState({
-      paymentAmount: state => state.deposit.payment.amount
+      paymentCurrency: state => state.deposit.payment.currency
     }),
     canGoToNextStep () {
-      return Boolean(this.paymentAmount)
+      return Boolean(this.paymentCurrency)
     }
   },
+
+  watch: {
+    localPaymentCurrency (value) {
+      this.updateCurrency(value)
+    }
+  },
+
   methods: {
     ...mapActions({
-      updateAmount: 'deposit/payment/updateAmount'
+      updateCurrency: 'deposit/payment/updateCurrency'
     }),
     submit () {
       this.$emit('go-to-next-step')

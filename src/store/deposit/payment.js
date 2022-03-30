@@ -18,6 +18,9 @@ const actions = {
     const numberValue = Number(amount.replace(/ /g, '')) // convert our string value to number
 
     commit('setAmount', numberValue)
+  },
+  updateCurrency ({ commit }, currency) {
+    commit('setCurrency', currency)
   }
 }
 
@@ -30,6 +33,9 @@ const mutations = {
   },
   setAmount (state, amount) {
     state.amount = amount
+  },
+  setCurrency (state, currency) {
+    state.currency = currency
   }
 }
 
