@@ -67,7 +67,7 @@ export default {
 .account-list {
   &__item {
     &:not(:first-child) {
-      margin-top: var(--default-margin);
+      margin-top: var(--m-margin);
     }
   }
 }

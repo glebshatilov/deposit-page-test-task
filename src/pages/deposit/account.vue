@@ -1,15 +1,16 @@
 <template>
   <div class="deposit-account-page">
-    <h1>Please select your account</h1>
-    <AccountList />
+    <AccountPicker />
   </div>
 </template>
 
 <script>
-import AccountList from '~/components/pages/deposit/account/AccountList'
+import AccountPicker from '~/components/pages/deposit/account/AccountPicker'
 
 export default {
   name: 'DepositAccountPage',
-  components: { AccountList }
+  components: {
+    AccountPicker
+  }
 }
 </script>
