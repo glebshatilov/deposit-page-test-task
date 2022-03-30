@@ -18,6 +18,7 @@ export default {
   },
 
   css: [
+    '~assets/global'
   ],
 
   plugins: [
