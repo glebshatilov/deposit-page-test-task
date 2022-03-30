@@ -5,13 +5,17 @@
     <SummaryInfoTable :list="summaryData.list" />
     <SummaryInfoNotices class="summary-info__notices" :list="summaryData.notices" />
 
+    <UiModal :is-open="isModalOpen" @close="isModalOpen = false">
+      <PaymentModal />
+    </UiModal>
+
     <UiButton v-if="selectedPaymentMethodType === 'CARD'" class="summary-info__button" tag="nuxt-link" to="/deposit/success/">
       Pay
     </UiButton>
     <UiButton v-if="selectedPaymentMethodType === 'M_PESA'" class="summary-info__button" @click="goToMPesaPayment">
       Pay via M-Pesa
     </UiButton>
-    <UiButton v-if="selectedPaymentMethodType === 'BANK_TRANSFER'" class="summary-info__button" @click="submit">
+    <UiButton v-if="selectedPaymentMethodType === 'BANK_TRANSFER'" class="summary-info__button">
       Download pdf
     </UiButton>
   </div>
@@ -22,6 +26,8 @@ import { mapState, mapGetters } from 'vuex'
 import SummaryInfoTable from './SummaryInfoTable'
 import SummaryInfoNotices from './SummaryInfoNotices'
 import UiButton from '~/components/ui/Button/UiButton'
+import UiModal from '~/components/ui/Modal/UiModal'
+import PaymentModal from '~/components/common/PaymentModal/PaymentModal'
 
 export default {
   name: 'SummaryInfo',
@@ -29,7 +35,15 @@ export default {
   components: {
     UiButton,
     SummaryInfoTable,
-    SummaryInfoNotices
+    SummaryInfoNotices,
+    UiModal,
+    PaymentModal
+  },
+
+  data () {
+    return {
+      isModalOpen: false
+    }
   },
 
   computed: {
@@ -43,7 +57,7 @@ export default {
 
   methods: {
     goToMPesaPayment () {
-      console.log('goToMPesaPayment')
+      this.isModalOpen = true
     }
   }
 }
