@@ -11,7 +11,13 @@
       />
     </template>
     <template v-else>
-      Loading...
+      <UiSkeleton
+        v-for="n in 3"
+        :key="n"
+        class="payment-methods-list__item"
+        theme="dark"
+        height="169px"
+      />
     </template>
   </div>
 </template>
@@ -20,13 +26,15 @@
 import { mapState, mapActions } from 'vuex'
 
 import PaymentMethodsCard from './PaymentMethodsCard'
+import UiSkeleton from '~/components/ui/Skeleton/UiSkeleton'
 import { getAvailablePaymentMethodsForDeposit } from '~/services/api/mockRequests'
 
 export default {
   name: 'PaymentMethodsList',
 
   components: {
-    PaymentMethodsCard
+    PaymentMethodsCard,
+    UiSkeleton
   },
 
   data () {

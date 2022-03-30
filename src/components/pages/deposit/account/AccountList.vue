@@ -11,7 +11,13 @@
       />
     </template>
     <template v-else>
-      Loading...
+      <UiSkeleton
+        v-for="n in 3"
+        :key="n"
+        class="account-list__item"
+        theme="dark"
+        height="94px"
+      />
     </template>
   </div>
 </template>
@@ -20,13 +26,15 @@
 import { mapState, mapActions } from 'vuex'
 
 import AccountCard from './AccountCard'
+import UiSkeleton from '~/components/ui/Skeleton/UiSkeleton'
 import { getAvailableAccountsForDeposit } from '~/services/api/mockRequests'
 
 export default {
   name: 'AccountList',
 
   components: {
-    AccountCard
+    AccountCard,
+    UiSkeleton
   },
 
   data () {
