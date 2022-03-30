@@ -1,11 +1,19 @@
 <template>
   <div class="deposit-summary-page">
-    <h1>Summary Page</h1>
+    <SummaryInfo />
   </div>
 </template>
 
 <script>
+import SummaryInfo from '~/components/pages/deposit/summary/SummaryInfo'
+
 export default {
-  name: 'DepositSummaryPage'
+  name: 'DepositSummaryPage',
+
+  components: {
+    SummaryInfo
+  },
+
+  middleware: 'depositData'
 }
 </script>

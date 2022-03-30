@@ -1,20 +1,29 @@
 <template>
   <div class="index-page">
     <h1>Index Page</h1>
-    <nuxt-link to="/deposit/account/">
+
+    <UiButton class="index-page__button" tag="nuxt-link" to="/deposit/account/">
       Deposit
-    </nuxt-link>
+    </UiButton>
   </div>
 </template>
 
 <script>
+import UiButton from '~/components/ui/Button/UiButton'
+
 export default {
-  name: 'IndexPage'
+  name: 'IndexPage',
+
+  components: {
+    UiButton
+  }
 }
 </script>
 
 <style lang="scss">
-.index-page h1 {
-  color: blue;
+.index-page {
+  &__button {
+    margin-top: var(--l-margin);
+  }
 }
 </style>

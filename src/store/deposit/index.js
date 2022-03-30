@@ -1,35 +1,127 @@
+import { currencyFormatter } from '~/helpers/formatters'
+
 const state = () => ({
-  level: null,
-  goal: null,
-  progress: null,
-  remains: null,
-  levels: null,
-  nextLevel: null
 })
 
-const getters = {}
+const getters = {
+  summaryData: (state) => { // ToDo: Need refactoring or moving a logic to API
+    if (['CARD'].includes(state.payment.selectedMethod?.type)) {
+      return {
+        list: [
+          {
+            label: 'Trading account',
+            value: state.account.selected?.name
+          },
+          {
+            label: 'Current balance',
+            value: currencyFormatter(state.account.selected?.balance, state.account.selected?.currency)
+          },
+          {
+            label: 'Payment method',
+            value: state.payment.selectedMethod?.name
+          },
+          {
+            label: 'Amount',
+            value: currencyFormatter(state.payment.amount, state.account.selected?.currency)
+          },
+          {
+            label: 'Commission',
+            value: state.payment.selectedMethod?.commission
+          }
+        ],
 
-const actions = {
-  init ({ commit }, payload) {
-    commit('setData', payload)
+        ...(state.payment.selectedMethod?.notices && {
+          notices: state.payment.selectedMethod?.notices
+        })
+      }
+    }
+
+    if (['M_PESA'].includes(state.payment.selectedMethod?.type)) {
+      return {
+        list: [
+          {
+            label: 'Trading account',
+            value: state.account.selected?.name
+          },
+          {
+            label: 'Current balance',
+            value: currencyFormatter(state.account.selected?.balance, state.account.selected?.currency)
+          },
+          {
+            label: 'Payment method',
+            value: state.payment.selectedMethod?.name
+          },
+          {
+            label: 'Phone number',
+            value: state.payment.validPhone
+          },
+          {
+            label: 'Amount',
+            value: currencyFormatter(state.payment.amount, state.account.selected?.currency)
+          },
+          {
+            label: 'Commission',
+            value: state.payment.selectedMethod?.commission
+          }
+        ],
+
+        ...(state.payment.selectedMethod?.notices && {
+          notices: state.payment.selectedMethod?.notices
+        })
+      }
+    }
+
+    if (['BANK_TRANSFER'].includes(state.payment.selectedMethod?.type)) {
+      return {
+        list: [
+          {
+            label: 'Trading account',
+            value: state.account.selected?.name
+          },
+          {
+            label: 'Current balance',
+            value: currencyFormatter(state.account.selected?.balance, state.account.selected?.currency)
+          },
+          {
+            label: 'Payment method',
+            value: state.payment.selectedMethod?.name
+          },
+          {
+            label: 'Payment currency',
+            value: state.payment.currency
+          },
+          {
+            label: 'Commission',
+            value: state.payment.selectedMethod?.commission
+          },
+          {
+            label: 'IBAN',
+            value: 'abcde'
+          },
+          {
+            label: 'Account number',
+            value: '21343535264'
+          }
+        ],
+
+        ...(state.payment.selectedMethod?.notices && {
+          notices: state.payment.selectedMethod?.notices
+        })
+      }
+    }
+
+    return {
+      list: []
+    }
   }
 }
 
-const mutations = {
-  setData (state, payload) {
-    // очередной костыль (спасибо ТБ)
-    if (payload.level?.name === 'Ручной vip') {
-      payload.level.name = 'elite'
-    }
-    state.level = payload.level?.name
-    state.goal = payload.level?.goal
-    state.progress = payload.level?.progress
-    state.remains = payload.level?.goal - payload.level?.progress
-    state.levels = payload.levels
+const actions = {
 
-    const currentIndex = payload.levels.findIndex(level => level.name === state.level)
-    state.nextLevel = state.level === 'elite' ? null : payload.levels[currentIndex + 1] || null
-  }
+}
+
+const mutations = {
+
 }
 
 export default {
