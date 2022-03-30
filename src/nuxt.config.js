@@ -30,7 +30,8 @@ export default {
   ],
 
   modules: [
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    'portal-vue/nuxt'
   ],
 
   axios: {

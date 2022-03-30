@@ -1,6 +1,8 @@
 <template>
   <div class="default-layout">
     <nuxt />
+
+    <portal-target name="modals" multiple />
   </div>
 </template>
 
