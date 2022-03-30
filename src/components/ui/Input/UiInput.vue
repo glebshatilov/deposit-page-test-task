@@ -120,7 +120,7 @@ export default {
         this.theme ? 'ui-input--' + this.theme : '',
         {
           'ui-input--disabled': this.disabled,
-          'ui-input--active': this.value || this.isFocused,
+          'ui-input--active': this.value || this.value === 0 || this.isFocused,
           'ui-input--focused': this.isFocused,
           'ui-input--valid': (this.valid || this.isPhoneValid) && !this.error,
           'ui-input--has-error': this.error,

@@ -41,7 +41,7 @@ export default {
       return false
     },
     submit () {
-      this.$router.push('/deposit/payment-method/')
+      this.$emit('go-to-next-step')
     }
   }
 }
