@@ -1,11 +1,16 @@
 <template>
   <div class="deposit-payment-page">
-    <h1>Payment Page</h1>
+    <PaymentPicker />
   </div>
 </template>
 
 <script>
+import PaymentPicker from '~/components/pages/deposit/payment/PaymentPicker'
+
 export default {
-  name: 'DepositPaymentPage'
+  name: 'DepositPaymentPage',
+  components: {
+    PaymentPicker
+  }
 }
 </script>

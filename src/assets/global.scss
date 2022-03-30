@@ -10,6 +10,7 @@ body {
   font-family: Arial;
   font-size: 16px;
   background: var(--background-dark);
+  -webkit-tap-highlight-color: rgba(0,0,0,0); // отключение подсвечивания элементов при нажатии для iPhone
   color: var(--white);
   margin: 0;
   min-height: 95vh;

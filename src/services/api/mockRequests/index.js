@@ -24,3 +24,28 @@ export async function getAvailableAccountsForDeposit () {
     }
   ]
 }
+
+export async function getAvailablePaymentMethodsForDeposit () {
+  await sleep(2000)
+
+  return [
+    {
+      id: '12',
+      name: 'Visa / Mastercard',
+      type: 'CARD',
+      logoUrl: 'visa.svg'
+    },
+    {
+      id: '13',
+      name: 'M-Pesa',
+      type: 'M_PESA',
+      logoUrl: 'm-pesa-logo.png'
+    },
+    {
+      id: '14',
+      name: 'Bank transfer',
+      type: 'BANK_TRANSFER',
+      logoUrl: 'bank-transfer.svg'
+    }
+  ]
+}
