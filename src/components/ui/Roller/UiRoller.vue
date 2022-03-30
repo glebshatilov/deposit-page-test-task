@@ -1,19 +1,21 @@
 <template functional>
-  <div class="ui-roller"
-       :class="[
-         `ui-roller--${props.color}`,
-         data.staticClass,
-         data.class,
-       ]"
-       :style="[
-         data.style,
-         data.staticStyle,
-         {
-           '--size': props.size,
-           '--scale' : props.size.slice(0, -2) / 64
-         }
-       ]"
-       v-bind="data.attrs">
+  <div
+    class="ui-roller"
+    :class="[
+      `ui-roller--${props.color}`,
+      data.staticClass,
+      data.class,
+    ]"
+    :style="[
+      data.style,
+      data.staticStyle,
+      {
+        '--size': props.size,
+        '--scale' : props.size.slice(0, -2) / 64
+      }
+    ]"
+    v-bind="data.attrs"
+  >
     <div class="ui-roller__wrapper">
       <div />
       <div />
