@@ -22,6 +22,7 @@ export default {
   ],
 
   plugins: [
+    { src: '~/plugins/directives', ssr: false }
   ],
 
   buildModules: [
