@@ -14,7 +14,7 @@ import AccountList from '~/components/pages/deposit/account/AccountList'
 import UiButton from '~/components/ui/Button/UiButton'
 
 export default {
-  name: 'DepositAccountPage',
+  name: 'AccountPicker',
   components: {
     AccountList,
     UiButton
